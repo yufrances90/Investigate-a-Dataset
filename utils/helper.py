@@ -51,6 +51,9 @@ def generate_popularity_data_by_genre(genre_key, df):
     popularity_df = popularity_df.set_index(['release_year'])
 
     return popularity_df.sum(level=[0]).sort_index()
+
+def generate_revenue_data_by_key(key, df):
+    return df.set_index([key])['revenue'].sum(level=[0]).sort_index()
     
     
 
