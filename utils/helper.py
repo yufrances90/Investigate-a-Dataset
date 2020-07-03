@@ -40,5 +40,18 @@ def draw_popularity_graph(data_arr, label_arr):
     plt.legend()
     plt.show()
     
+def generate_popularity_data_by_genre(genre_key, df):
+    
+    popularity_df = df[[genre_key, 'release_year', 'popularity']]
+    
+    popularity_df = popularity_df[popularity_df[genre_key] == 1]
+
+    popularity_df = popularity_df[['release_year', 'popularity']]
+
+    popularity_df = popularity_df.set_index(['release_year'])
+
+    return popularity_df.sum(level=[0]).sort_index()
+    
+    
 
  
